@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+function func1() {
+	return 10;
+}
+
+var a = func1();
+console.log('a is ', a);
+
+
+function func2() {
+	// this is private
+	var privateVarOfFunc2 = 4000;
+	dontUseThis = 10; // same as window.dontUseThis = 10;
+	
+	// innerFunc is also private
+	function innerFunc() {
+		return privateVarOfFunc2; 
+	}
+
+	return innerFunc;
+}
+
+var b = func2();
+var c = b();
+
+console.log('c is', c);
+var mylog = console.log;
+mylog('haha');
+
+
+console.log('private is no longer private', dontUseThis);
+</script>
+</body>
+</html>

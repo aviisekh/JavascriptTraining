@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+function Banner() {
+	this.message = "hello";
+	var that = this;
+
+	this.showMesageAfterFewSeconds = function() {
+		console.log('pahilo this', this);
+		setTimeout(function() {
+			console.log('dosro this', this);
+			console.log('Message: ', that.message);
+		}, 2000);
+	}
+
+	this.showMessage = function() {
+		console.log("Message is", this.message);
+	}
+}
+
+var b1 = new Banner();
+b1.showMessage();
+b1.showMesageAfterFewSeconds();
+</script>
+</body>
+</html>

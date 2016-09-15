@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style type="text/css">
+* {
+	padding: 0px;
+	margin: 0px;
+}
+.container {
+	width:800px;
+	height:500px;
+	border: 1px solid black;
+	position: relative;
+}
+.container .box {
+	width: 50px;
+	height: 50px;
+	border: 1px solid blue;
+	position: absolute;
+}
+</style>
+<div class="container" id='container1'>
+</div>
+<script type="text/javascript">
+function Box() {
+	this.width = 50;
+	this.height = 50;
+	this.x = 0;
+	this.y = 0;
+
+	this.init = function() {
+		this.element = document.createElement('div');
+		this.element.setAttribute('class', 'box');
+	}
+
+	this.draw = function() {
+		this.element.style.left = this.x + 'px';
+		this.element.style.top = this.y + 'px';
+	}
+}
+
+function Batta(container) {
+	var boxes = [];
+	var width = 800;
+	var height = 500;
+
+	this.init = function() {
+		createBoxes();
+	}
+
+	function createBox() {
+		var box = new Box();
+		box.init();
+		box.x = new Util().getRandom(0, width-box.width);
+		box.y = new Util().getRandom(0, height-box.height);
+
+		container.appendChild(box.element);
+		box.draw();
+	}
+
+	function createBoxes() {
+		for (var i=0; i<30; i++) {
+			createBox();
+		}
+	}
+}
+
+function Util() {
+	this.getRandom = function(min, max) {
+		return Math.floor(Math.random() * (max-min+1)) + min;
+	}
+}
+
+/*
+var c = document.getElementById('container1')
+new Batta(c);
+*/
+var b = new Batta(document.getElementById('container1'));
+b.init();
+</script>
+</body>
+</html>

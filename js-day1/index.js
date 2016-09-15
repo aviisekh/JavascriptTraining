@@ -2,40 +2,37 @@
  * Created by aviisekh on 9/14/16.
  */
 var box = document.getElementById("box");
-// var boxStyle = window.getComputedStyle(box);
 
-// i=5;
-
-/*var tempfunc = function (){
-    i=i+1;
-    box.style["margin-left"] = i + "px";
-}*/
 
 i=0;
-var tempfunc = function(){
+var tempfunc = function (){
     i=i+1;
-    console.log("hello",i++);
+    box.style["margin-left"] = i + "px";
 }
+/*i=0;
+var tempfunc = function(){
+    console.log("hello");
+}*/
+
 
 var id ;
 function startInterval() {
-    id = setInterval(tempfunc, 100);
+    clearInterval(id);
+    console.log("id", id +" destroyed");
+    id = setInterval(tempfunc, 10);
+    console.log("id", id +" started");
 }
-
-// var id = setInterval(tempfunc,1000);
-
-// var id = setInterval(tempfunc,1);
-
 
 
 var start = document.getElementById("start");
 var stop = document.getElementById("stop");
 
 stop.addEventListener("click", function(){
-    clearInterval(id)
+    console.log("id", id +" cleared");
+    clearInterval(id);
 });
 
 
 start.addEventListener("click", function(){
-    startInterval(id)
+    startInterval();
 });

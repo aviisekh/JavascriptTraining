@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+function Shape() {
+
+	// "var" makes it private
+	var sides;
+
+	// two different variables
+	var x = 10;
+	this.x = 20;
+
+	// "this" makes it publicly accessible
+	this.setSides = function(_sides) {
+		sides = _sides;
+		x = 20; // var x = 10 ko value change bhayo
+		this.x = 40; // this.x (line 15) ko value change bhayo
+	}
+
+	this.getSides = function() {
+		return sides;
+	}
+}
+
+var s1 = new Shape();
+// s1.sides - not allowed since it's private
+s1.setSides(3);
+console.log('s1 ko sides ', s1.getSides());
+
+
+////////////////
+
+var s2 = new Shape();
+console.log('var sides of s2', s2.getSides());
+console.log('s2.sides', s2.sides);
+
+s2.setSides(5);
+s2.sides = 10;
+console.log('var sides of s2', s2.getSides());
+console.log('s2.sides', s2.sides);
+
+</script>
+</body>
+</html>

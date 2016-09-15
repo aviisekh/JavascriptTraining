@@ -1,0 +1,96 @@
+
+body {
+    font-family: 'Muli', sans-serif;
+}
+
+html,
+body,
+.col-1-layout,
+.login,
+.main,
+.login-content,
+.login-wrapper{
+    height: 100%;
+}
+
+input{
+    border-radius: 10px;
+    display: block;
+    border: none;
+
+}
+
+
+.main{
+    background: #7dd8e8;
+}
+
+.login-content{
+    margin: 0 auto;
+    display: table;
+}
+
+.login-wrapper{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.welcome-wrapper span{
+    color:white;
+}
+
+.logo {
+    width: 291px;
+    height: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;;
+}
+
+
+.error-box{
+    background: #e14820;
+    text-align: left;
+    color: white;
+    padding:10px;
+    margin:20px 0px;
+    font-size: 13px;
+}
+
+.form-wrapper .login-email,.login-password{
+    width: 100%;
+    margin: 0px 0px 14px 0px;
+    padding: 5px 0px;
+}
+
+.login-btn-wrapper{
+    display: table;
+}
+
+.login-btn-wrapper span{
+    display: table-cell;
+    vertical-align: middle;
+}
+.login-btn-wrapper .login-button{
+    background: #274f56;
+    padding: 5px;
+    color:white;
+    float: left;
+    margin-right: 10px;
+}
+
+.problem-wrapper{
+    clear: left;
+    padding-bottom: 20px;
+    padding-top: 18px;
+}
+
+.problem{
+    color: white;
+}
+
+.join-eightstages{
+    font-size: 20px;
+    font-weight:bolder;
+}
+

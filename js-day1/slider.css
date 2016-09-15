@@ -1,0 +1,38 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.slider .viewport{
+    width:700px;
+    height:400px;
+    border:solid 2px blue;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slider h1{
+    text-align: center;
+}
+
+.slider .button-wrapper{
+    text-align: center;
+    padding:10px;
+}
+
+#image-wrapper{
+    width:10000px;
+}
+
+.slider .viewport li{
+    float: left;
+
+}
+
+.slider .viewport img{
+    /*margin-right:10px;*/
+    height: 400px;
+    width:700px;
+}
+
+
