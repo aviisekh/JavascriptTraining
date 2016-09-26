@@ -1,101 +1,152 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title></title>
+    <title></title>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .container {
+        border: 1px solid black;
+        height: 500px;
+        position: relative;
+        width: 800px;
+    }
+    
+    .container .box {
+        border: 1px solid blue;
+        /* border-radius: 25px; */
+        height: 50px;
+        position: absolute;
+        width: 50px;
+    }
+    </style>
 </head>
+
 <body>
-<style type="text/css">
-* {
-	padding: 0px;
-	margin: 0px;
-}
-.container {
-	width:800px;
-	height:500px;
-	border: 1px solid black;
-	position: relative;
-}
-.container .box {
-	width: 50px;
-	height: 50px;
-	border: 1px solid blue;
-	position: absolute;
-}
-</style>
-<div class="container" id='container1'>
-</div>
-<script type="text/javascript">
-function Box() {
-	this.width = 50;
-	this.height = 50;
-	this.x = 0;
-	this.y = 0;
+    <div class="container" id='container1'>
+    </div>
+    <script type="text/javascript">
 
-	this.init = function() {
-		this.element = document.createElement('div');
-		this.element.setAttribute('class', 'box');
-	}
+    function Box(color) {
+        this.width = 50;
+        this.height = 50;
+        this.x = 0;
+        this.y = 0;
+        this.xDirection = 1;   //Direction = 1 for forward and Direction = -1 for backward
+        this.yDirection = 1;
 
-	this.draw = function() {
-		this.element.style.left = this.x + 'px';
-		this.element.style.top = this.y + 'px';
-	}
-}
+        this.init = function() {
+            this.element = document.createElement('div');
+            this.element.setAttribute('class', 'box');
+        };
 
-function Batta(container) {
-	var boxes = [];
-	var width = 800;
-	var height = 500;
-	var noOfBoxes = 30;
+        this.draw = function() {
+            this.element.style.background = color;
+            // this.element.style.border = "none";
+            this.element.style.left = this.x + 'px';
+            this.element.style.top = this.y + 'px';
+        };
+    }
 
-	this.init = function() {
-		createBoxes();
-		
-		setInterval(function() {
-			moveBoxes();
-		}, 100);
-	}
+    function Batta(container) {
+        var boxes = [];
+        var width = 800;
+        var height = 500;
+        var noOfBoxes = 5;
 
-	function moveBoxes() {
-		for (var i=0; i<noOfBoxes; i++) {
-			var box = boxes[i];
+        this.init = function() {
+            createBoxes();
 
-			box.x++;
-			box.y++;
-			box.draw();
-		}
-	}
+            setInterval(function() {
+            moveBoxes();
+            }, 5	);
+        };
 
-	function createBox() {
-		var box = new Box();
-		boxes.push(box);
-		box.init();
-		box.x = new Util().getRandom(0, width-box.width);
-		box.y = new Util().getRandom(0, height-box.height);
+        function moveBoxes() {
 
-		container.appendChild(box.element);
-		box.draw();
-	}
+            for (var i = 0; i < noOfBoxes; i++) {
+                var box = boxes[i];
+                if (box.x === 0) {
+                    box.xDirection = 1;
+                } else if (box.x + box.width == width) {
+                    box.xDirection = -1;
+                }
+                if (box.y === 0) {
+                    box.yDirection = 1;
+                } else if (box.y + box.height == height) {
+                    box.yDirection = -1;
+                }
 
-	function createBoxes() {
-		for (var i=0; i<noOfBoxes; i++) {
-			createBox();
-		}
-	}
-}
+         /*       if (collided(box)){
+                	box.xDirection *=-1;
+                	box.yDirection *=-1;
+                }*/
 
-function Util() {
-	this.getRandom = function(min, max) {
-		return Math.floor(Math.random() * (max-min+1)) + min;
-	}
-}
+                collided(box);
 
-/*
-var c = document.getElementById('container1')
-new Batta(c);
-*/
-var b = new Batta(document.getElementById('container1'));
-b.init();
-</script>
+                box.x += box.xDirection;
+                box.y += box.yDirection;
+                box.draw();
+			}
+
+			function collided(box){
+				for (var j = 0; j<noOfBoxes ; j++){
+					var temp = boxes[j];
+					if (temp == box)
+						continue;
+					else{
+						if((box.x+50>=temp.x) && (box.x<=temp.x+50) && (box.y+50>=temp.y) && (box.y<=temp.y+50) ){
+							if((box.x+50>=temp.x) && (box.x<=temp.x+50)) box.xDirection *=-1;
+							if ((box.y+50>=temp.y) && (box.y<=temp.y+50)) box.yDirection *=-1;
+						}
+					}
+				}
+			}
+
+        }
+
+        function createBox(color,x,y) {
+            var box = new Box(color);
+            boxes.push(box);
+            box.init();
+            // box.x=x;
+            // box.y=y;
+            box.x = new Util().getRandom(0, width - box.width);
+            box.y = new Util().getRandom(0, height - box.height);
+
+            container.appendChild(box.element);
+            box.draw();
+        }
+
+        function createBoxes() {
+            // for (var i = 0; i < noOfBoxes; i++) {
+                createBox("red",600,10);
+                createBox("green",700,10);
+                createBox("pink",700,10);
+                createBox("purple",700,10);
+                createBox("black",700,10);
+                // createBox();
+            // }
+        }
+    }
+
+    function Util() {
+        this.getRandom = function(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        };
+    }
+
+    /*
+    var c = document.getElementById('container1')
+    new Batta(c);
+    */
+    var b = new Batta(document.getElementById('container1'));
+    b.init();
+    </script>
 </body>
+
 </html>

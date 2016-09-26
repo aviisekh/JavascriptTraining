@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>To Do List</title>
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>To Do Lists</h1>
+            <form>
+                <input id="todo" type="text" placeholder="add item" />
+                <button type="button" value="ADD" onclick="addTodo()">ADD</button>
+            </form>
+        </div>
+
+        <div id="todo-list">
+          <!--   <div class="todo-entry">
+              <input type="checkbox" class="checkbox" />
+              <input type="text" class="text-box" value="aksldf"></input>
+              <button type="button" value="DELETE">DEL</button>
+          </div> -->
+        </div>
+    </div>
+    <script src="./utils/HttpUtil.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>

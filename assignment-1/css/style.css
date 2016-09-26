@@ -1,0 +1,66 @@
+.d {
+	background: #eee;
+	border: 1px solid #000;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+.container {
+	margin: 0 auto;
+	margin-top: 50px;
+	width: 960px;
+}
+
+.slider {
+	overflow: hidden;
+	width: 800px;
+}
+
+.images li {
+	margin-left: -4px;
+	float: left;
+}
+
+.images {
+	width: 8640px;
+	display: block;
+}
+
+.control-left {
+	position: relative;
+	left: 10px;
+	top: -200px;
+}
+
+.control-right {
+	position: relative;
+	left: 763px;
+	top: -234px;
+}
+
+button {
+	background-repeat: no-repeat;
+	height: 34px;
+	border: 0;
+	width: 23px;
+	cursor: pointer;
+}
+
+button:focus {
+	border: 0;
+}
+
+.control-left button {
+	background: url("../img/left.png");
+}
+
+.control-right button {
+	background: url("../img/right.png");
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+    border: 1px solid black;
+    margin: 5px;
+}
+</style>
+</head>
+<body>
+
+<p>Click the button to find out how many child nodes the div element below has.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<div id="myDIV">
+  <p>First p element (index 1)</p>
+  <p>Second p element (index 3)</p>
+</div>
+
+<p><strong>Note:</strong> Whitespace inside elements is considered as text, and text
+is considered as nodes. In this example, index 0, 2 and 4 in DIV are text nodes.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var c = document.getElementById("myDIV").children.length;
+    document.getElementById("demo").innerHTML = c;
+    console.log(document.getElementById("myDIV").children.length);
+}
+</script>
+
+</body>
+</html>
+ 
