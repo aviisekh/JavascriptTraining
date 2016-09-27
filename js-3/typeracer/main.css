@@ -4,11 +4,11 @@
 }
 
 .container {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     font-size: 20px;
     width: 800px;
     margin: 50px auto;
-    box-shadow: 5px 5px 20px black;
+    box-shadow: 5px 5px 20px rgba(0,0,0,.1);
     overflow: hidden;
 }
 
@@ -49,7 +49,6 @@ input {
     height: 30px;
     top: 35px;
     right: 50px;
-    /*border : 1    px solid goldenrod;*/
 }
 
 #timer span,
@@ -85,8 +84,32 @@ input {
     bottom: 0;
 }
 
-#start {
-    display: block;
-    margin: 0 auto;
-    padding: 20px;
+#overlay {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: rgba(0,0,0,.6);
+}
+
+#start{
+    margin-top: 30px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 1px 3px 11px grey;
+}
+
+#start-wrapper h1{
+    color: black;
+    font-size: 30px;
 }
