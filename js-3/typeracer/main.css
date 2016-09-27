@@ -39,26 +39,30 @@ input {
     background: white;
 }
 
-.carArea #timer{
+.carArea #timer {
     position: absolute;
-    background: url("timer.png");
+    /*background: url("timer.png");
     background-repeat: no-repeat;
     background-position: left center;
-    padding-left: 30px;
-    width: 70px;
+    padding-left: 30px;*/
+    width: 100px;
     height: 30px;
-    top: 5px;
+    top: 35px;
     right: 50px;
-    border : 1px solid goldenrod;
+    /*border : 1    px solid goldenrod;*/
 }
 
-.carArea #wpm{
+#timer span,
+#wpm span {
+    vertical-align: middle;
+}
+
+.carArea #wpm {
     position: absolute;
     right: 50px;
-    width: 20px;
-    height: 50px;
+    width: 100px;
+    height: 30px;
     bottom: 0;
-    border : 1px solid goldenrod;
 }
 
 .carArea .carTrack {
@@ -79,4 +83,10 @@ input {
     position: absolute;
     left: 0px;
     bottom: 0;
+}
+
+#start {
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
 }

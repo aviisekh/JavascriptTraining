@@ -1,11 +1,12 @@
  function RaceArea() {
      var container = document.getElementById("container1");
-     // var text = "Artificial intelligence (AI) is intelligence exhibited by machines. In computer science, an ideal 'intelligent' machine is a flexible rational agent that perceives its environment and takes actions that maximize its chance of success at some goal.";
-     var text = "Artificial intelligence";
+     var text = "It was hard to toss things I had once thought were valuable enough to spend money on and just as hard to separate myself from worn and ragged clothing I had for sentimental reasons. Once I'd passed through the first few tough decisions, though, the momentum had been built and it was a breeze.";
+     // var text = "Artificial intelligence";
      var that = this;
      this.textArr = text.split(" ");
 
-     this.timer = document.getElementById(timer);
+     var timer = document.getElementById("timer");
+     this.wpm = document.getElementById("wpm");
      this.car = document.getElementById("car");
      this.textArea = document.createElement("div");
      this.textArea.className = "textarea";
@@ -26,10 +27,21 @@
      container.appendChild(this.textArea);
      container.appendChild(this.typeArea);
 
-     this.time = 0;
-     this.timerStart= function() {
+     var seconds = 0;
+     var minutes = 0;
+     this.totalTime = 1;
+     timer.children[1].innerHTML = minutes++;
+     timer.children[3].innerHTML = seconds++;
+
+     this.timerStart = function() {
          setInterval(function() {
-             timer.children[1].innerHTML = that.time++;
+             that.totalTime++;
+             timer.children[3].innerHTML = seconds++;
+             if (seconds % 60 == 0) {
+                 seconds = 0;
+                 timer.children[1].innerHTML = minutes++;
+             }
+
          }, 1000);
      }
  }
@@ -39,8 +51,17 @@
      raceArea.timerStart();
 
      var position = 0;
+     var wpm;
      raceArea.textArea.children[position].style.color = "green";
      raceArea.textArea.children[position].style.textDecoration = "underline";
+
+     function calculateWPM() {
+         wpm = Math.round((position / raceArea.totalTime) * 60);
+         raceArea.wpm.children[0].innerHTML = wpm;
+     }
+     
+     setInterval(calculateWPM, 2000);
+
 
      function moveCar() {
          var percentCompleted = (position / raceArea.textArr.length) * 92;
@@ -67,9 +88,10 @@
                  raceArea.textArea.children[position - 1].style.textDecoration = "none";
                  raceArea.textArea.children[position - 1].style.color = "black";
                  moveCar();
+                 console.log(position);
                  if (position == raceArea.textArr.length) {
                      setTimeout(function() {
-                         window.alert("Typing Complete");
+                         window.alert("Typing Complete\n Your Speed:" + wpm + " wpm");
                      }, 1000);
                  }
              }
