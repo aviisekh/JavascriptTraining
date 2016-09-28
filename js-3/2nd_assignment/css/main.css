@@ -5,11 +5,11 @@
  
  .container {
      background: #EDE7B5;
-     border: 1px solid green;
+     /*border: 1px solid green;*/
      margin: 100px auto;
      width: 1000px;
      padding: 50px;
-     box-shadow:  5px 5px 20px black; 
+    box-shadow: 5px 5px 20px rgba(0,0,0,.1);
  }
  
  .header form {
